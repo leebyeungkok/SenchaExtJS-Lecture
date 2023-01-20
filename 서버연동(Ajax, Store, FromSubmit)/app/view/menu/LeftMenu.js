@@ -1,0 +1,25 @@
+Ext.define('ExFrm.view.menu.LeftMenu',{
+    extend:'Ext.tree.TreePanel',
+    alias:'widget.leftmenu',
+    requires:['ExFrm.view.menu.LeftMenuController'],
+    controller:'leftmenu',
+    width:200,
+    title:'메뉴',
+    rootVisible:false,
+    displayField:'name',
+    store:{
+        type:'tree',
+        fields:['name', 'url'],
+        proxy:{
+            type:'ajax',
+            url:'./service/menu.json',
+            reader:{
+                type:'json'
+            }
+        },
+        autoLoad:true
+    },
+    listeners:{
+        itemclick:'onMenuClick'
+    }
+})
